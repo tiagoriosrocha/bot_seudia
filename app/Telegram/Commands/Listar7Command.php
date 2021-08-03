@@ -14,17 +14,17 @@ class Listar7Command extends Command
     /**
      * @var string Command Name
      */
-    protected $name = 'listar-7';
+    protected $name = 'listar7';
 
     /**
      * @var array Command Aliases
      */
-    protected $aliases = ['listar7'];
+    protected $aliases = ['listarsete'];
 
     /**
      * @var string Command Description
      */
-    protected $description = 'Comando listar-7, exibe as respostas dos últimos 7 dias.';
+    protected $description = 'Comando listar7, exibe as respostas dos últimos 7 dias.';
 
     /**
      * {@inheritdoc}
