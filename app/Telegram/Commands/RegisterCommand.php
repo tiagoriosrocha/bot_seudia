@@ -6,6 +6,7 @@ use Telegram\Bot\Commands\Command;
 use Telegram;
 use App\models\Cliente;
 use Illuminate\Support\Facades\Log;
+use Carbon\Carbon;
 
 /**
  * Class HelpCommand.
@@ -34,27 +35,32 @@ class RegisterCommand extends Command
     
     {
         $response = $this->getUpdate();
-        $chat_id = $response['message']['chat']['id'];
-        $user_id = $response['message']['from']['id'];
-
+        $user_id = $response['message']['chat']['id'];
+        
         Log::info($response);
 
+        $cliente = Cliente::where('user_id',$user_id)->first();
 
-        // $cliente = Cliente::where('user_id',)
-        //                     ->where('chat_id',$mensagem['chat_id'])
-        //                     ->first();
+        if( !isset($cliente) ){
+             $cliente = new Cliente;
+             $cliente->user_id = $user_id;
+             $cliente->dataCadastro = Carbon::now();
+             $cliente->isActive = true;
 
-        // if( !isset($diario) ){
-        //     $diario = new Diario;
-        //     $diario->chat_id = $mensagem['chat_id'];
-        //     $diario->dia = $mensagem['pergunta_data'];
-        // }
+             $cliente->save();
 
-        
-        $text = "Olá!" . $chat_id . " - " . $user_id .chr(10);
-        $text.= "Você foi registrado com sucesso".chr(10).chr(10);
-        
-        
+             $text = "Olá!".chr(10);
+             $text.= "Você foi registrado com sucesso".chr(10).chr(10);     
+         }else{
+            $cliente->isActive = true;
+            $cliente->dataCadastro = Carbon::now();
+
+            $cliente->save();
+
+            $text = "Olá!".chr(10);
+            $text.= "Seu cadastro foi ativado novamente".chr(10).chr(10);     
+         }
+
         $this->replyWithMessage(compact('text'));
 
     }
