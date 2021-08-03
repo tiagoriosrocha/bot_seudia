@@ -31,7 +31,7 @@ Route::post('/JWLDXyegFhXmYrCW74MHvEkvX3O0ZhVWJbqpLweBfPNmgPDHvt/webhook', funct
         Log::info("update: " . $update);
         $diario = new DiarioController;
         $resultado = $diario->receberMensagem($update);
-        Log::info("Resultado: " . $resultado;
+        Log::info("Resultado: " . $resultado);
 
         if($resultado == 0){
             Telegram::sendMessage([
