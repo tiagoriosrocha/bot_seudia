@@ -36,10 +36,10 @@ return [
             'username'            => env('TELEGRAM_BOT_NAME', 'YOUR_BOT_NAME'),
             'token'               => env('TELEGRAM_BOT_TOKEN', '1943814979:AAE3epDO4xrKgU1ICNgfagoNJ-ZYeifc_Vo'),
             'certificate_path'    => env('TELEGRAM_CERTIFICATE_PATH', 'YOUR-CERTIFICATE-PATH'),
-            'webhook_url'         => env('TELEGRAM_WEBHOOK_URL', 'YOUR-BOT-WEBHOOK-URL'),
+            'webhook_url'         => env('TELEGRAM_WEBHOOK_URL', 'https://daynotes.herokuapp.com/'),
             'commands'            => [
                 //Acme\Project\Commands\MyTelegramBot\BotCommand::class
-                App\Telegram\Commands\HelpCommand::class,
+                //App\Telegram\Commands\HelpCommand::class,
             ],
         ],
 

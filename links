@@ -2,3 +2,20 @@ https://telegram-bot-sdk.readme.io/docs
 
 comandos:
 https://www.xibel-it.eu/setup-telegram-bot-sdk-with-webhook-in-laravel/
+
+deploy heroku: https://juangsalazprabowo.medium.com/how-to-deploy-a-laravel-app-into-heroku-df55efbf8e4e
+
+
+Host: ec2-3-230-38-145.compute-1.amazonaws.com
+database: d570u9aj68fqgf
+user: mqfoyhtywvpiip
+port: 5432
+pass: d8a3c33b3b2673a65aea67df6fb6c88260aee7c079ca37faf8f1f9bbb286b2ad
+uri:     postgres://mqfoyhtywvpiip:d8a3c33b3b2673a65aea67df6fb6c88260aee7c079ca37faf8f1f9bbb286b2ad@ec2-3-230-38-145.compute-1.amazonaws.com:5432/d570u9aj68fqgf
+
+DATABASE_URL
+
+
+APP_TIMEZONE 'America/Sao_Paulo'
+LOG_CHANNEL stderr
+TZ 'America/Sao_Paulo'
