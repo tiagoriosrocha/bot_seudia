@@ -43,13 +43,13 @@ class Listar7Command extends Command
         
         foreach($listaDiario as $diario){
             $text.= "***********".chr(10);
-            $text.= "Dia: " . $diario->dia .chr(10);    
+            $text.= "Dia: " . Carbon::createFromFormat('Y-m-d', $diario->dia)->format('d/m/Y') .chr(10);    
             $text.= "Alimentação: " . $diario->alimentacao .chr(10);
             $text.= "Sono: " . $diario->sono .chr(10);
             $text.= "Filhos: " . $diario->filhos .chr(10);
             $text.= "Casal: " . $diario->casal .chr(10);
             $text.= "Trabalho: " . $diario->trabalho .chr(10);
-            $text.= "Estudos: " . $diario->estudos .chr(10);
+            $text.= "Estudos: " . $diario->estudo .chr(10);
         }
         
         
