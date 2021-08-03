@@ -42,6 +42,7 @@ return [
                 App\Telegram\Commands\HelpCommand::class,
                 App\Telegram\Commands\RegisterCommand::class,
                 App\Telegram\Commands\UnregisterCommand::class,
+                App\Telegram\Commands\Listar7Command::class,
             ],
         ],
 
