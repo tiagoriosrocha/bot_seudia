@@ -17,6 +17,7 @@ class CreateClientesTable extends Migration
             $table->id();
             $table->string('user_id');
             $table->string('chat_id');
+            $table->date('dataCadastro')->nullable();
             $table->boolean('isActive')->nullable();
             $table->timestamps();
         });
