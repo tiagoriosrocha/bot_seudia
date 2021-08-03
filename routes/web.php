@@ -31,7 +31,8 @@ Route::post('/JWLDXyegFhXmYrCW74MHvEkvX3O0ZhVWJbqpLweBfPNmgPDHvt/webhook', funct
         
         if(    $mensagem['message']['text'] != '/help' 
             && $mensagem['message']['text'] != '/register'
-            && $mensagem['message']['text'] != '/unregister'){
+            && $mensagem['message']['text'] != '/unregister'
+            && $mensagem['message']['text'] != '/start')){
 
             $diario = new DiarioController;
             $resultado = $diario->processarMensagem($mensagem);
