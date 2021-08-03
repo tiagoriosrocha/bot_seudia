@@ -4,7 +4,7 @@ namespace App\Telegram\Commands;
 
 use Telegram\Bot\Commands\Command;
 use Telegram;
-use App\models\Cliente;
+use App\Models\Cliente;
 use Illuminate\Support\Facades\Log;
 use Carbon\Carbon;
 
