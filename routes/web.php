@@ -29,3 +29,8 @@ Route::post('/JWLDXyegFhXmYrCW74MHvEkvX3O0ZhVWJbqpLweBfPNmgPDHvt/webhook', funct
     $update = Telegram::commandsHandler(true); 
 });
 
+Route::get('/setwebhook', function () {
+    $response = Telegram::setWebhook(['url' => 'https://daynotes.herokuapp.com/JWLDXyegFhXmYrCW74MHvEkvX3O0ZhVWJbqpLweBfPNmgPDHvt/webhook']);
+    dd($response);
+});
+

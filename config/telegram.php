@@ -39,7 +39,7 @@ return [
             'webhook_url'         => env('TELEGRAM_WEBHOOK_URL', 'https://daynotes.herokuapp.com/'),
             'commands'            => [
                 //Acme\Project\Commands\MyTelegramBot\BotCommand::class
-                //App\Telegram\Commands\HelpCommand::class,
+                App\Telegram\Commands\HelpCommand::class,
             ],
         ],
 
