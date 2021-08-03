@@ -29,21 +29,33 @@ Route::get('/receber', [DiarioController::class, 'receberDados']);
 Route::post('/JWLDXyegFhXmYrCW74MHvEkvX3O0ZhVWJbqpLweBfPNmgPDHvt/webhook', function () {
         $update = Telegram::commandsHandler(true); 
         Log::info("update: " . $update);
+        $diario = new DiarioController;
+        $resultado = $diario->receberMensagem($update);
+        Log::info("Resultado: " . $resultado;
 
-        switch ($update['message']['text']) {
-            case 'xyz':
-                Telegram::triggerCommand('showMenue');
-                break;
-            
-            default:
-                Telegram::sendMessage([
-                            'chat_id' => $update['message']['chat']['id'], 
-                            'text' => "Desculpe, este comando não existe!",
-                            'parse_mode' => 'HTML',
-                ]);
-
-                Telegram::triggerCommand('showMenue');
+        if($resultado == 0){
+            Telegram::sendMessage([
+                        'chat_id' => $update['message']['chat']['id'], 
+                        'text' => "Desculpe, este comando não existe!",
+                        'parse_mode' => 'HTML',
+            ]);
         }
+
+
+        // switch ($update['message']['text']) {
+        //     case 'xyz':
+        //         //Telegram::triggerCommand('showMenue');
+        //         break;
+            
+        //     default:
+        //         Telegram::sendMessage([
+        //                     'chat_id' => $update['message']['chat']['id'], 
+        //                     'text' => "Desculpe, este comando não existe!",
+        //                     'parse_mode' => 'HTML',
+        //         ]);
+
+        //         //Telegram::triggerCommand('showMenue');
+        // }
     }
 );
 
