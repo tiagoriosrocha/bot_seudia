@@ -35,6 +35,7 @@ class RegisterCommand extends Command
     {
         $response = $this->getUpdate();
         $chat_id = $response['message']['chat']['id'];
+        $user_id = $response['message']['from']['id'];
 
         Log::info($response);
 
@@ -50,7 +51,7 @@ class RegisterCommand extends Command
         // }
 
         
-        $text = "Olá!" . $chat_id .chr(10);
+        $text = "Olá!" . $chat_id . " - " . $user_id .chr(10);
         $text.= "Você foi registrado com sucesso".chr(10).chr(10);
         
         
