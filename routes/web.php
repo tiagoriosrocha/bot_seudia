@@ -26,6 +26,6 @@ Route::get('/enviarPesquisa', [DiarioController::class, 'enviarPesquisa']);
 Route::get('/receber', [DiarioController::class, 'receberDados']);
 
 Route::post('/JWLDXyegFhXmYrCW74MHvEkvX3O0ZhVWJbqpLweBfPNmgPDHvt/webhook', function () {
-    $update = Telegram::commandsHandler(true);
+    $update = Telegram::commandsHandler(true); //comentario
 });
 
