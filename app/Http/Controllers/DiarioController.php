@@ -12,12 +12,12 @@ class DiarioController extends Controller
 {
     
     const perguntas = array(
-        "Como foi o seu dia em termos de alimentação [1-5]?",
-        "Como foi o seu dia em termos de sono [1-5]?",
-        "Como foi o seu dia em relação a relação com os filhos [1-5]?",
-        "Como foi o seu dia em relação a relação ao casal [1-5]?",
-        "Como foi o seu dia em relação a produtividade no trabalho [1-5]?",
-        "Como foi o seu dia em relação aos estudos [1-5]?"
+        "Como foi o seu dia em relação a sua alimentação [1-5]?",
+        "Como foi o seu sono [1-5]?",
+        "Como foi a relação sua com seus filhos [1-5]?",
+        "Como foi o seu relacionamento amoroso [1-5]?",
+        "Como foi a sua produtividade no trabalho [1-5]?",
+        "Como foi o seu dia em relação aos estudos/capacitação [1-5]?"
     );
         
 
