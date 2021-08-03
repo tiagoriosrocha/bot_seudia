@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DiarioController;
 use App\Http\Controllers\TelegramBotController;
+use Illuminate\Support\Facades\Log;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,8 +27,10 @@ Route::get('/enviarPesquisa', [DiarioController::class, 'enviarPesquisa']);
 Route::get('/receber', [DiarioController::class, 'receberDados']);
 
 Route::post('/JWLDXyegFhXmYrCW74MHvEkvX3O0ZhVWJbqpLweBfPNmgPDHvt/webhook', function () {
-    $update = Telegram::commandsHandler(true); 
-});
+        $update = Telegram::commandsHandler(true); 
+        Log::info("update: " . $update);
+    }
+);
 
 Route::get('/setwebhook', function () {
     $response = Telegram::setWebhook(['url' => 'https://daynotes.herokuapp.com/JWLDXyegFhXmYrCW74MHvEkvX3O0ZhVWJbqpLweBfPNmgPDHvt/webhook']);
