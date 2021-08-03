@@ -15,14 +15,14 @@ class TelegramBotController extends Controller
         return $activity;
     }
 
-    public function enviarMensagem($mensagem){
+    public function enviarMensagem($mensagem, $chat_id){
 
         if(!isset($mensagem)){
             $mensagem = "vazio";
         }
 
         Telegram::sendMessage([
-            'chat_id' => '743350983',
+            'chat_id' => $chat_id,
             'parse_mode' => 'HTML',
             'text' => $mensagem
         ]);

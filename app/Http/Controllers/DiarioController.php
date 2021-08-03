@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\TelegramBotController;
 use Carbon\Carbon;
 use App\Models\Diario;
+use App\Models\Cliente;
 use Illuminate\Support\Facades\Log;
 
 class DiarioController extends Controller
@@ -24,8 +25,13 @@ class DiarioController extends Controller
     public function enviarPesquisa(){
         $telegram = new TelegramBotController();
         
-        for($i=0; $i<count(DiarioController::perguntas); $i++){
-            $telegram->enviarMensagem(DiarioController::perguntas[$i]);    
+        $listaClientes = Cliente::where('isActive',1)->get();
+
+        foreach($listaClientes as $cliente){
+            Log::info("Enviando perguntas para o cliente " . $cliente->user_id);
+            for($i=0; $i<count(DiarioController::perguntas); $i++){
+                $telegram->enviarMensagem(DiarioController::perguntas[$i],$cliente->user_id);    
+            }
         }
 
         return "Pesquisa Enviada";
