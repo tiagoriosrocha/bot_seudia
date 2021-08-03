@@ -35,6 +35,10 @@ class Kernel extends ConsoleKernel
         // })->everyMinute();
 
         $schedule->call(function () {
+            Log::info("rodou a cron!!");
+        })->everyMinute();
+
+        $schedule->call(function () {
             $teleCrontrol = new DiarioController();
             $teleCrontrol->enviarPesquisa();
             Log::info("rodou a cron: enviar pesquisa");
