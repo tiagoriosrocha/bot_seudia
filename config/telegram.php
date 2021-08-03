@@ -40,6 +40,7 @@ return [
             'commands'            => [
                 //Acme\Project\Commands\MyTelegramBot\BotCommand::class
                 App\Telegram\Commands\HelpCommand::class,
+                App\Telegram\Commands\RegisterCommand::class,
             ],
         ],
 
