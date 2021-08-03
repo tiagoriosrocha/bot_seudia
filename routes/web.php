@@ -27,20 +27,24 @@ Route::get('/enviarPesquisa', [DiarioController::class, 'enviarPesquisa']);
 Route::get('/receber', [DiarioController::class, 'receberDados']);
 
 Route::post('/JWLDXyegFhXmYrCW74MHvEkvX3O0ZhVWJbqpLweBfPNmgPDHvt/webhook', function () {
-        $update = Telegram::commandsHandler(true); 
-        Log::info("update: " . $update);
-        $diario = new DiarioController;
-        $resultado = $diario->receberMensagem($update);
-        Log::info("Resultado: " . $resultado);
+        $mensagem = Telegram::commandsHandler(true); 
+        
+        if(    $mensagem['message']['text'] != '/help' 
+            && $mensagem['message']['text'] != '/register'
+            && $mensagem['message']['text'] != '/unregister'){
 
-        if($resultado == 0){
-            Telegram::sendMessage([
-                        'chat_id' => $update['message']['chat']['id'], 
-                        'text' => "Desculpe, este comando não existe!",
-                        'parse_mode' => 'HTML',
-            ]);
+            $diario = new DiarioController;
+            $resultado = $diario->processarMensagem($mensagem);
+            
+            if($resultado == 0){
+                Telegram::sendMessage([
+                            'chat_id' => $mensagem['message']['chat']['id'], 
+                            'text' => "Desculpe, este comando não existe. Apenas responda as perguntas ou use os comandos: /help /register /unregister",
+                            'parse_mode' => 'HTML',
+                ]);
+            }
+
         }
-
 
         // switch ($update['message']['text']) {
         //     case 'xyz':

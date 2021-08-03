@@ -67,7 +67,7 @@ class DiarioController extends Controller
     }
 
 
-    public function receberMensagem($mensagem){
+    public function processarMensagem($mensagem){
         
         if(isset($mensagem['message']['reply_to_message'])){
             $pergunta = $mensagem['message']['reply_to_message']['text'];
