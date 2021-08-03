@@ -5,6 +5,7 @@ namespace App\Telegram\Commands;
 use Telegram\Bot\Commands\Command;
 use Telegram;
 use App\models\Cliente;
+use Illuminate\Support\Facades\Log;
 
 /**
  * Class HelpCommand.
@@ -33,7 +34,10 @@ class RegisterCommand extends Command
     
     {
         $response = $this->getUpdate();
-        $chat_id = $mensagem['message']['chat']['id'];
+        $chat_id = $response['message']['chat']['id'];
+
+        Log::info($response);
+
 
         // $cliente = Cliente::where('user_id',)
         //                     ->where('chat_id',$mensagem['chat_id'])
