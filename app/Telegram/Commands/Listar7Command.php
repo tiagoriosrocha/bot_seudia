@@ -53,19 +53,19 @@ class Listar7Command extends Command
             } 
             $text.= "".chr(10);
 
-            $text.= "Sono: " . $diario->sono . "              ";
+            $text.= "Sono: " . $diario->sono . "                ";
             for($i=0;$i<$diario->sono;$i++){
               $text.= json_decode('"'.$star.'"') . "";  
             } 
             $text.= "".chr(10);
 
-            $text.= "Filhos: " . $diario->filhos . "           ";
+            $text.= "Filhos: " . $diario->filhos . "              ";
             for($i=0;$i<$diario->filhos;$i++){
               $text.= json_decode('"'.$star.'"') . "";  
             } 
             $text.= "".chr(10);
 
-            $text.= "Casal: " . $diario->casal . "              ";
+            $text.= "Casal: " . $diario->casal . "               ";
             for($i=0;$i<$diario->casal;$i++){
               $text.= json_decode('"'.$star.'"') . "";  
             } 
