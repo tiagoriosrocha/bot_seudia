@@ -49,6 +49,25 @@ class DiarioController extends Controller
         return "Pesquisa Enviada";
     }
 
+    public function enviarPesquisaAgora($user_id){
+        Log::info("Enviando perguntas para o cliente " . $user_id);
+            
+        $text  = "Boa noite!" . chr(10);
+        $text .= "Como foi o seu dia " . Carbon::now()->format("d/m") . "?" . chr(10);
+        $text .= "Responda as questões abaixo." . chr(10);
+        $text .= "0 - Não se aplica" . chr(10);
+        $text .= "1 - Péssimo" . chr(10);
+        $text .= "2 - Ruim" . chr(10);
+        $text .= "3 - Normal/médio" . chr(10);
+        $text .= "4 - Muito bom" . chr(10);
+        $text .= "5 - Ótimo" . chr(10) . chr(10);
+
+        $telegram->enviarMensagem($text,$user_id);
+        for($i=0; $i<count(DiarioController::perguntas); $i++){
+            $telegram->enviarMensagem(DiarioController::perguntas[$i],$user_id);    
+        }
+    }
+
 
     public function receberDados(){
         $telegram = new TelegramBotController();

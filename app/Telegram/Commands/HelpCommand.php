@@ -46,6 +46,7 @@ class HelpCommand extends Command
         $text.= "/list7 - receba a relação dos últimos 7 dias.".chr(10);
         $text.= "/list15 - receba a relação dos últimos 15 dias.".chr(10);
         $text.= "/list30 - receba a relação dos últimos 30 dias.".chr(10);
+        $text.= "/questions - receba as perguntas diárias agora.".chr(10);
 
         
         $this->replyWithMessage(compact('text'));

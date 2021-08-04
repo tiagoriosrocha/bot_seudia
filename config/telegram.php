@@ -47,6 +47,7 @@ return [
                 App\Telegram\Commands\List15Command::class,
                 App\Telegram\Commands\List30Command::class,
                 App\Telegram\Commands\DeleteCommand::class,
+                App\Telegram\Commands\QuestionsCommand::class,
             ],
         ],
 

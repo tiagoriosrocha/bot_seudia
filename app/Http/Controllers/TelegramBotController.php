@@ -18,7 +18,8 @@ class TelegramBotController extends Controller
                             "/list7",
                             "/list15",
                             "/list30",
-                            "/delete");
+                            "/delete",
+                            "/questions");
 
 
     public function updatedActivity()
