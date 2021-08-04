@@ -29,6 +29,18 @@ class DiarioController extends Controller
 
         foreach($listaClientes as $cliente){
             Log::info("Enviando perguntas para o cliente " . $cliente->user_id);
+            
+            $text  = "Boa noite!" . chr(10);
+            $text .= "Como foi o seu dia " . Carbon::now()->format("d/m") . "?" . chr(10);
+            $text .= "Responda as questões abaixo." . chr(10);
+            $text .= "0 - não se aplica" . chr(10);
+            $text .= "1 - péssimo" . chr(10);
+            $text .= "2 - ruim" . chr(10);
+            $text .= "3 - normal/médio" . chr(10);
+            $text .= "4 - Muito bom" . chr(10);
+            $text .= "5 - ótimo" . chr(10) . chr(10);
+
+            $telegram->enviarMensagem($text,$cliente->user_id);
             for($i=0; $i<count(DiarioController::perguntas); $i++){
                 $telegram->enviarMensagem(DiarioController::perguntas[$i],$cliente->user_id);    
             }
