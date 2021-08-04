@@ -259,6 +259,8 @@ class DiarioController extends Controller
         $ampola = "\xE2\x8C\x9B";
 
         if($listaDiario->count() >= 1){
+            $telegram = new TelegramBotController();
+
             $text = "Olá!".chr(10).chr(10);
             
             if($qtd == 1){
@@ -267,11 +269,12 @@ class DiarioController extends Controller
                 $text.= "Serão exibidos os resultados dos últimos ". $qtd ." dias:".chr(10);    
             }
 
-            $telegram = new TelegramBotController();           
+            $telegram->enviarMensagem($text,$user_id);
+                       
             
             foreach($listaDiario as $diario){
-                $text.= " ".chr(10);
-                $text.= json_decode('"'.$calendar.'"') . "    Dia: " . Carbon::createFromFormat('Y-m-d', $diario->dia)->format('d/m/Y') .chr(10);    
+                //$text = " ".chr(10);
+                $text = json_decode('"'.$calendar.'"') . "    Dia: " . Carbon::createFromFormat('Y-m-d', $diario->dia)->format('d/m/Y') .chr(10);    
                 
                 $text.= json_decode('"'.$food.'"') . "    Alimentação: " . $diario->alimentacao . "   ";
                 for($i=0;$i<$diario->alimentacao;$i++){
