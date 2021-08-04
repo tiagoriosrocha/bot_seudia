@@ -261,7 +261,7 @@ class DiarioController extends Controller
         if($listaDiario->count() >= 1){
             $telegram = new TelegramBotController();
 
-            $text = "Olá!".chr(10).chr(10);
+            $text = "Olá!".chr(10);
             
             if($qtd == 1){
                 $text.= "Será exibido último registro cadastrado:".chr(10);
