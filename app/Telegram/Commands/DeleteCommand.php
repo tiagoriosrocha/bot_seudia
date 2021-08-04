@@ -4,6 +4,7 @@ namespace App\Telegram\Commands;
 
 use Telegram\Bot\Commands\Command;
 use Telegram;
+use App\Http\Controllers\ClienteController;
 
 /**
  * Class HelpCommand.
@@ -32,8 +33,18 @@ class DeleteCommand extends Command
     
     {
         $response = $this->getUpdate();
-
-        $text = "Comando ainda não implementado";
+        $user_id = $response['message']['chat']['id'];
+        
+        $clienteController = new ClienteController;
+        $result = $clienteController->deletar($user_id);
+        
+        if($result == 1){
+            $text = "Olá!".chr(10);
+            $text.= "Você foi desregistrado e seus dados foram completamente deletados".chr(10).chr(10);     
+         }elseif($result==0){
+            $text = "Olá!".chr(10);
+            $text.= "Houve um problema ao deletar".chr(10).chr(10);     
+         }
                 
         $this->replyWithMessage(compact('text'));
 
