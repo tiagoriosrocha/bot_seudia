@@ -15,17 +15,17 @@ class Listar7Command extends Command
     /**
      * @var string Command Name
      */
-    protected $name = 'listar7';
+    protected $name = 'list7';
 
     /**
      * @var array Command Aliases
      */
-    protected $aliases = ['listarsete'];
+    protected $aliases = ['listar7'];
 
     /**
      * @var string Command Description
      */
-    protected $description = 'Comando listar7, exibe as respostas dos últimos 7 dias.';
+    protected $description = 'Comando list7, exibe as respostas dos últimos 7 dias.';
 
     /**
      * {@inheritdoc}
@@ -38,11 +38,12 @@ class Listar7Command extends Command
 
         $listaDiario = Diario::where('chat_id',$user_id)->take(7)->orderBy('dia','desc')->get();
 
+        //emotions -> https://apps.timwhitlock.info/emoji/tables/unicode
         $star = "\xE2\xAD\x90";
         $calendar = "\xF0\x9F\x93\x86";
         $food = "\xF0\x9F\x8D\xB4";
         $sleep = "\xF0\x9F\x92\xA4";
-        $love = "\xF0\x9F\x92\x98";
+        $love = "\xF0\x9F\x92\x96";
         $kids = "\xF0\x9F\x91\xAB";
         $work = "\xF0\x9F\x8F\xA2";
         $study = "\xE2\x9C\x8F";
