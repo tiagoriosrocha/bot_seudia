@@ -53,11 +53,35 @@ class Listar7Command extends Command
             } 
             $text.= "".chr(10);
 
-            $text.= "Sono: " . $diario->sono .chr(10);
-            $text.= "Filhos: " . $diario->filhos .chr(10);
-            $text.= "Casal: " . $diario->casal .chr(10);
-            $text.= "Trabalho: " . $diario->trabalho .chr(10);
-            $text.= "Estudos: " . $diario->estudo .chr(10);
+            $text.= "Sono: " . $diario->sono;
+            for($i=0;$i<$diario->sono;$i++){
+              $text.= json_decode('"'.$star.'"') . "";  
+            } 
+            $text.= "".chr(10);
+
+            $text.= "Filhos: " . $diario->filhos;
+            for($i=0;$i<$diario->filhos;$i++){
+              $text.= json_decode('"'.$star.'"') . "";  
+            } 
+            $text.= "".chr(10);
+
+            $text.= "Casal: " . $diario->casal;
+            for($i=0;$i<$diario->casal;$i++){
+              $text.= json_decode('"'.$star.'"') . "";  
+            } 
+            $text.= "".chr(10);
+
+            $text.= "Trabalho: " . $diario->trabalho;
+            for($i=0;$i<$diario->trabalho;$i++){
+              $text.= json_decode('"'.$star.'"') . "";  
+            } 
+            $text.= "".chr(10);
+            
+            $text.= "Estudos: " . $diario->estudo;
+            for($i=0;$i<$diario->estudo;$i++){
+              $text.= json_decode('"'.$star.'"') . "";  
+            } 
+            $text.= "".chr(10);
         }
         
         
