@@ -52,39 +52,39 @@ class Listar7Command extends Command
         
         foreach($listaDiario as $diario){
             $text.= " ".chr(10);
-            $text.= json_decode('"'.$calendar.'"') . " Dia: " . Carbon::createFromFormat('Y-m-d', $diario->dia)->format('d/m/Y') .chr(10);    
+            $text.= json_decode('"'.$calendar.'"') . "    Dia: " . Carbon::createFromFormat('Y-m-d', $diario->dia)->format('d/m/Y') .chr(10);    
             
-            $text.= json_decode('"'.$food.'"') . " Alimentação: " . $diario->alimentacao . "   ";
+            $text.= json_decode('"'.$food.'"') . "    Alimentação: " . $diario->alimentacao . "   ";
             for($i=0;$i<$diario->alimentacao;$i++){
               $text.= json_decode('"'.$star.'"') . "";  
             } 
             $text.= "".chr(10);
 
-            $text.= json_decode('"'.$sleep.'"') . " Sono: " . $diario->sono . "                ";
+            $text.= json_decode('"'.$sleep.'"') . "    Sono: " . $diario->sono . "                ";
             for($i=0;$i<$diario->sono;$i++){
               $text.= json_decode('"'.$star.'"') . "";  
             } 
             $text.= "".chr(10);
 
-            $text.= json_decode('"'.$kids.'"') . " Filhos: " . $diario->filhos . "               ";
+            $text.= json_decode('"'.$kids.'"') . "    Filhos: " . $diario->filhos . "               ";
             for($i=0;$i<$diario->filhos;$i++){
               $text.= json_decode('"'.$star.'"') . "";  
             } 
             $text.= "".chr(10);
 
-            $text.= json_decode('"'.$love.'"') . " Casal: " . $diario->casal . "               ";
+            $text.= json_decode('"'.$love.'"') . "    Casal: " . $diario->casal . "               ";
             for($i=0;$i<$diario->casal;$i++){
               $text.= json_decode('"'.$star.'"') . "";  
             } 
             $text.= "".chr(10);
 
-            $text.= json_decode('"'.$work.'"') . " Trabalho: " . $diario->trabalho . "          ";
+            $text.= json_decode('"'.$work.'"') . "    Trabalho: " . $diario->trabalho . "          ";
             for($i=0;$i<$diario->trabalho;$i++){
               $text.= json_decode('"'.$star.'"') . "";  
             } 
             $text.= "".chr(10);
 
-            $text.= json_decode('"'.$study.'"') . " Estudos: " . $diario->estudo . "           ";
+            $text.= json_decode('"'.$study.'"') . "    Estudos: " . $diario->estudo . "           ";
             for($i=0;$i<$diario->estudo;$i++){
               $text.= json_decode('"'.$star.'"') . "";  
             } 
