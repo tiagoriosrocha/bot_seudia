@@ -185,15 +185,25 @@ class DiarioController extends Controller
             $telegram = new TelegramBotController();
             $dia = Carbon::parse($diario->dia);
             
-            $mensagemFeedback = "Todos os registros do dia " . $dia->format('d/m/Y') . " foram cadastrados com sucesso!";
+            $check = "\xE2\x9C\x85";
+            $calendar = "\xF0\x9F\x93\x86";
+            $food = "\xF0\x9F\x8D\xB4";
+            $sleep = "\xF0\x9F\x92\xA4";
+            $love = "\xF0\x9F\x92\x96";
+            $kids = "\xF0\x9F\x91\xAB";
+            $work = "\xF0\x9F\x8F\xA2";
+            $study = "\xE2\x9C\x8F";
+
+            $mensagemFeedback = json_decode('"'.$check.'"') . " Todos os registros do dia " . $dia->format('d/m/Y') . " foram cadastrados com sucesso!";
             $telegram->enviarMensagem($mensagemFeedback,$diario->chat_id);
 
-            $mensagemFeedback = "Alimentação: " . $diario->alimentacao 
-                              . "; Sono: " . $diario->sono
-                              . "; Filhos: " . $diario->filhos 
-                              . "; Casal: " . $diario->casal 
-                              . "; Trabalho: " . $diario->trabalho 
-                              . "; Estudo: " . $diario->estudo;
+            $mensagemFeedback = json_decode('"'.$food.'"') . " Alimentação: " . $diario->alimentacao . chr(10);
+            $mensagemFeedback .= json_decode('"'.$sleep.'"') . " Sono: " . $diario->sono . chr(10);
+            $mensagemFeedback .= json_decode('"'.$kids.'"') . " Filhos: " . $diario->filhos . chr(10);
+            $mensagemFeedback .= json_decode('"'.$love.'"') . " Casal: " . $diario->casal . chr(10);
+            $mensagemFeedback .= json_decode('"'.$work.'"') . " Trabalho: " . $diario->trabalho . chr(10);
+            $mensagemFeedback .= json_decode('"'.$study.'"') . " Estudo: " . $diario->estudo . chr(10);
+
             $telegram->enviarMensagem($mensagemFeedback,$diario->chat_id);
 
             $diario->confirmado = true;
