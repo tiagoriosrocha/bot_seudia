@@ -62,6 +62,7 @@ class DiarioController extends Controller
         $text .= "4 - Muito bom" . chr(10);
         $text .= "5 - Ótimo" . chr(10) . chr(10);
 
+        $telegram = new TelegramBotController();
         $telegram->enviarMensagem($text,$user_id);
         for($i=0; $i<count(DiarioController::perguntas); $i++){
             $telegram->enviarMensagem(DiarioController::perguntas[$i],$user_id);    
