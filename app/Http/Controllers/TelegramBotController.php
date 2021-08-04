@@ -9,6 +9,18 @@ use Carbon\Carbon;
 
 class TelegramBotController extends Controller
 {
+    
+    const comandos = array( "/help", 
+                            "/register", 
+                            "/unregister",
+                            "/start",
+                            "/list1",
+                            "/list7",
+                            "/list15",
+                            "/list30",
+                            "/delete");
+
+
     public function updatedActivity()
     {
         $activity = Telegram::getUpdates();

@@ -42,7 +42,11 @@ return [
                 App\Telegram\Commands\HelpCommand::class,
                 App\Telegram\Commands\RegisterCommand::class,
                 App\Telegram\Commands\UnregisterCommand::class,
-                App\Telegram\Commands\Listar7Command::class,
+                App\Telegram\Commands\List7Command::class,
+                App\Telegram\Commands\List1Command::class,
+                App\Telegram\Commands\List15Command::class,
+                App\Telegram\Commands\List30Command::class,
+                App\Telegram\Commands\DeleteCommand::class,
             ],
         ],
 

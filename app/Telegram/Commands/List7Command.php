@@ -10,7 +10,7 @@ use Carbon\Carbon;
 /**
  * Class HelpCommand.
  */
-class Listar7Command extends Command
+class List7Command extends Command
 {
     /**
      * @var string Command Name

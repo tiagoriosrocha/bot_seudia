@@ -26,14 +26,14 @@ Route::get('/', function () {
 //Route::get('/enviarPesquisa', [DiarioController::class, 'enviarPesquisa']);
 //Route::get('/receber', [DiarioController::class, 'receberDados']);
 
+
+
+
 Route::post('/JWLDXyegFhXmYrCW74MHvEkvX3O0ZhVWJbqpLweBfPNmgPDHvt/webhook', function () {
         $mensagem = Telegram::commandsHandler(true); 
+        $textomsg = $mensagem['message']['text'];
         
-        if(    $mensagem['message']['text'] != '/help' 
-            && $mensagem['message']['text'] != '/register'
-            && $mensagem['message']['text'] != '/unregister'
-            && $mensagem['message']['text'] != '/start'
-            && $mensagem['message']['text'] != '/list7'){
+        if( !in_array($textomsg,TelegramBotController::comandos) ){
 
             $diario = new DiarioController;
             $resultado = $diario->processarMensagem($mensagem);
