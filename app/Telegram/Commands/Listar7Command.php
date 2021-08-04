@@ -59,7 +59,7 @@ class Listar7Command extends Command
             } 
             $text.= "".chr(10);
 
-            $text.= "Filhos: " . $diario->filhos . "              ";
+            $text.= "Filhos: " . $diario->filhos . "               ";
             for($i=0;$i<$diario->filhos;$i++){
               $text.= json_decode('"'.$star.'"') . "";  
             } 
