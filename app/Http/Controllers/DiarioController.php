@@ -13,12 +13,12 @@ class DiarioController extends Controller
 {
     
     const perguntas = array(
-        "Como foi o seu dia em relação a sua alimentação [1-5]?",
-        "Como foi o seu sono [1-5]?",
-        "Como foi a relação sua com seus filhos [1-5]?",
-        "Como foi o seu relacionamento amoroso [1-5]?",
-        "Como foi a sua produtividade no trabalho [1-5]?",
-        "Como foi o seu dia em relação aos estudos/capacitação [1-5]?"
+        "Como foi o seu dia em relação a sua alimentação?",
+        "Como foi o seu sono?",
+        "Como foi a relação sua com seus filhos?",
+        "Como foi o seu relacionamento amoroso?",
+        "Como foi a sua produtividade no trabalho?",
+        "Como foi o seu dia em relação aos estudos/capacitação?"
     );
         
 
@@ -33,12 +33,12 @@ class DiarioController extends Controller
             $text  = "Boa noite!" . chr(10);
             $text .= "Como foi o seu dia " . Carbon::now()->format("d/m") . "?" . chr(10);
             $text .= "Responda as questões abaixo." . chr(10);
-            $text .= "0 - não se aplica" . chr(10);
-            $text .= "1 - péssimo" . chr(10);
-            $text .= "2 - ruim" . chr(10);
-            $text .= "3 - normal/médio" . chr(10);
+            $text .= "0 - Não se aplica" . chr(10);
+            $text .= "1 - Péssimo" . chr(10);
+            $text .= "2 - Ruim" . chr(10);
+            $text .= "3 - Normal/médio" . chr(10);
             $text .= "4 - Muito bom" . chr(10);
-            $text .= "5 - ótimo" . chr(10) . chr(10);
+            $text .= "5 - Ótimo" . chr(10) . chr(10);
 
             $telegram->enviarMensagem($text,$cliente->user_id);
             for($i=0; $i<count(DiarioController::perguntas); $i++){
