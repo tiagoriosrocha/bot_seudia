@@ -34,7 +34,7 @@ return [
     'bots'                         => [
         'mybot' => [
             'username'            => env('TELEGRAM_BOT_NAME', 'YOUR_BOT_NAME'),
-            'token'               => env('TELEGRAM_BOT_TOKEN', '1943814979:AAE3epDO4xrKgU1ICNgfagoNJ-ZYeifc_Vo'),
+            'token'               => env('TELEGRAM_BOT_TOKEN', '1890919769:AAHiOJKVfkxMezJTruijaPyUMUrcLCCVazE'),
             'certificate_path'    => env('TELEGRAM_CERTIFICATE_PATH', 'YOUR-CERTIFICATE-PATH'),
             'webhook_url'         => env('TELEGRAM_WEBHOOK_URL', 'https://daynotes.herokuapp.com/'),
             'commands'            => [
