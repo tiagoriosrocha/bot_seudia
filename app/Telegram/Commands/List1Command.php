@@ -4,6 +4,7 @@ namespace App\Telegram\Commands;
 
 use Telegram\Bot\Commands\Command;
 use Telegram;
+use App\Http\Controllers\DiarioController;
 
 /**
  * Class HelpCommand.
@@ -32,10 +33,9 @@ class List1Command extends Command
     
     {
         $response = $this->getUpdate();
-
-        $text = "Comando ainda não implementado";
-                
+        $user_id = $response['message']['chat']['id'];
+        $diario = new DiarioController;
+        $text = $diario->geraRelatorio($user_id,1);
         $this->replyWithMessage(compact('text'));
-
     }
 }
