@@ -311,12 +311,14 @@ class DiarioController extends Controller
                   $text.= json_decode('"'.$star.'"') . "";  
                 } 
                 $text.= "".chr(10);
+
+                $telegram->enviarMensagem($text,$user_id);
             }
         }else{
             $text = json_decode('"'.$ampola.'"') . " Infelizmente você ainda não possui registros!";
+            $telegram->enviarMensagem($text,$user_id);
         }
 
-        $telegram->enviarMensagem($text,$user_id);
         //return $text;
     }
 
