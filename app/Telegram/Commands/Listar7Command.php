@@ -38,7 +38,7 @@ class Listar7Command extends Command
 
         $listaDiario = Diario::where('chat_id',$user_id)->take(7)->orderBy('dia','desc')->get();
 
-        $emoticons = "\ud83d\udc4e";
+        $emoticons = "\U00002b55";
 
         $text = "Olá!".chr(10).chr(10);
         $text.= "Serão exibidos os resultados dos últimos 7 dias:".chr(10);
