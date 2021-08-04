@@ -35,7 +35,7 @@ class List30Command extends Command
         $response = $this->getUpdate();
         $user_id = $response['message']['chat']['id'];
         $diario = new DiarioController;
-        $text = $diario->geraRelatorio($user_id,30);
-        $this->replyWithMessage(compact('text'));
+        $diario->geraRelatorio($user_id,30);
+        //$this->replyWithMessage(compact('text'));
     }
 }

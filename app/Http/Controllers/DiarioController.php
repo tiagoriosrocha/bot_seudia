@@ -266,7 +266,8 @@ class DiarioController extends Controller
             }else{
                 $text.= "Serão exibidos os resultados dos últimos ". $qtd ." dias:".chr(10);    
             }
-            
+
+            $telegram = new TelegramBotController();           
             
             foreach($listaDiario as $diario){
                 $text.= " ".chr(10);
@@ -312,7 +313,8 @@ class DiarioController extends Controller
             $text = json_decode('"'.$ampola.'"') . " Infelizmente você ainda não possui registros!";
         }
 
-        return $text;
+        $telegram->enviarMensagem($text,$user_id);
+        //return $text;
     }
 
 }
