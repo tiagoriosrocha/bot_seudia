@@ -66,23 +66,33 @@ class DiarioController extends Controller
         $this->armazenaOuAtualiza($listaMensagens);
     }
 
-
+    /*
+    * Retorna  1 se deu certo
+    * Retorna  0 se não deu pra cadastrar
+    * Retorna -1 se o texto não for no padrão (1-5)
+    */
     public function processarMensagem($mensagem){
         
         if(isset($mensagem['message']['reply_to_message'])){
             $pergunta = $mensagem['message']['reply_to_message']['text'];
+            $resposta = $mensagem['message']['text'];
 
-            if( in_array($pergunta, DiarioController::perguntas) ){
-                $objMensagem['chat_id'] = $mensagem['message']['chat']['id'];
-                $objMensagem['pergunta'] = array_search($pergunta,DiarioController::perguntas);
-                $objMensagem['pergunta_data'] = Carbon::createFromTimestamp($mensagem['message']['reply_to_message']['date'])->format('Y-m-d');
-                $objMensagem['resposta'] = $mensagem['message']['text'];
-                $objMensagem['resposta_data'] = Carbon::createFromTimestamp($mensagem['message']['date'])->format('Y-m-d');
-                $this->armazenaOuAtualizaMensagem($objMensagem);
-                return 1;
+            if($resposta >= 0 && $resposta <= 5){
+               if( in_array($pergunta, DiarioController::perguntas) ){
+                    $objMensagem['chat_id'] = $mensagem['message']['chat']['id'];
+                    $objMensagem['pergunta'] = array_search($pergunta,DiarioController::perguntas);
+                    $objMensagem['pergunta_data'] = Carbon::createFromTimestamp($mensagem['message']['reply_to_message']['date'])->format('Y-m-d');
+                    $objMensagem['resposta'] = $mensagem['message']['text'];
+                    $objMensagem['resposta_data'] = Carbon::createFromTimestamp($mensagem['message']['date'])->format('Y-m-d');
+                    $this->armazenaOuAtualizaMensagem($objMensagem);
+                    return 1;
+                }else{
+                    return 0;
+                }
             }else{
-                return 0;
+                return -1;
             }
+            
         }
     }
 

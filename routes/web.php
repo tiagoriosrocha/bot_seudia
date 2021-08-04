@@ -20,11 +20,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/receber_atualizacao', [TelegramBotController::class, 'updatedActivity']);
-Route::get('/enviar_mensagem/{mensagem}', [TelegramBotController::class, 'enviarMensagem']);
-Route::get('/testar_bot', [TelegramBotController::class, 'getMe']);
-Route::get('/enviarPesquisa', [DiarioController::class, 'enviarPesquisa']);
-Route::get('/receber', [DiarioController::class, 'receberDados']);
+//Route::get('/receber_atualizacao', [TelegramBotController::class, 'updatedActivity']);
+//Route::get('/enviar_mensagem/{mensagem}', [TelegramBotController::class, 'enviarMensagem']);
+//Route::get('/testar_bot', [TelegramBotController::class, 'getMe']);
+//Route::get('/enviarPesquisa', [DiarioController::class, 'enviarPesquisa']);
+//Route::get('/receber', [DiarioController::class, 'receberDados']);
 
 Route::post('/JWLDXyegFhXmYrCW74MHvEkvX3O0ZhVWJbqpLweBfPNmgPDHvt/webhook', function () {
         $mensagem = Telegram::commandsHandler(true); 
@@ -38,7 +38,19 @@ Route::post('/JWLDXyegFhXmYrCW74MHvEkvX3O0ZhVWJbqpLweBfPNmgPDHvt/webhook', funct
             $diario = new DiarioController;
             $resultado = $diario->processarMensagem($mensagem);
             
-            if($resultado == 0){
+            if($resultado == 1){
+                Telegram::sendMessage([
+                            'chat_id' => $mensagem['message']['chat']['id'], 
+                            'text' => "Recebido!",
+                            'parse_mode' => 'HTML',
+                ]);
+            }elseif($resultado == -1){
+                Telegram::sendMessage([
+                            'chat_id' => $mensagem['message']['chat']['id'], 
+                            'text' => "Responda a mensagem com valores entre 0 e 5",
+                            'parse_mode' => 'HTML',
+                ]);
+            }elseif($resultado == 0){
                 Telegram::sendMessage([
                             'chat_id' => $mensagem['message']['chat']['id'], 
                             'text' => "Desculpe, este comando não existe. Apenas responda as perguntas ou use os comandos: /help /register /unregister /list7",
@@ -47,21 +59,6 @@ Route::post('/JWLDXyegFhXmYrCW74MHvEkvX3O0ZhVWJbqpLweBfPNmgPDHvt/webhook', funct
             }
 
         }
-
-        // switch ($update['message']['text']) {
-        //     case 'xyz':
-        //         //Telegram::triggerCommand('showMenue');
-        //         break;
-            
-        //     default:
-        //         Telegram::sendMessage([
-        //                     'chat_id' => $update['message']['chat']['id'], 
-        //                     'text' => "Desculpe, este comando não existe!",
-        //                     'parse_mode' => 'HTML',
-        //         ]);
-
-        //         //Telegram::triggerCommand('showMenue');
-        // }
     }
 );
 
