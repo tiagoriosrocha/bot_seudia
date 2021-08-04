@@ -54,8 +54,8 @@ Route::post('/JWLDXyegFhXmYrCW74MHvEkvX3O0ZhVWJbqpLweBfPNmgPDHvt/webhook', funct
                 ]);
             }elseif($resultado == 0){
                 $question = "\xE2\x9D\x93";
-                $text = json_decode('"'.$question.'"') . "Desculpe!" . chr(10) . chr(10);
-                $text .= "Este comando não existe." . chr(10);
+                $text = json_decode('"'.$question.'"') . "Desculpe!" . chr(10);
+                $text .= "Este comando é desconhecido." . chr(10) . chr(10);
                 $text .= "Apenas responda as perguntas ou use os comandos: ".chr(10);
                 foreach(TelegramBotController::comandos as $c){
                     $text .= $c . chr(10);
