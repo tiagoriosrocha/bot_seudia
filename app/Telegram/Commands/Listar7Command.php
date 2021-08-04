@@ -38,15 +38,17 @@ class Listar7Command extends Command
 
         $listaDiario = Diario::where('chat_id',$user_id)->take(7)->orderBy('dia','desc')->get();
 
-        $emoticons = "\xE2\xAD\x90";
+        $star = "\xE2\xAD\x90";
 
         $text = "Olá!".chr(10).chr(10);
         $text.= "Serão exibidos os resultados dos últimos 7 dias:".chr(10);
         
         foreach($listaDiario as $diario){
             $text.= "***********".chr(10);
-            $text.= json_decode('"'.$emoticons.'"')."Dia: " . Carbon::createFromFormat('Y-m-d', $diario->dia)->format('d/m/Y') .chr(10);    
-            $text.= "Alimentação: " . $diario->alimentacao .chr(10);
+            $text.= "Dia: " . Carbon::createFromFormat('Y-m-d', $diario->dia)->format('d/m/Y') .chr(10);    
+            $text.= "Alimentação: " . $diario->alimentacao;
+            for($i=0;$i<$diario->alimentacao;$i++) $text.=json_decode('"'.$star.'"');
+            $text.=.chr(10);
             $text.= "Sono: " . $diario->sono .chr(10);
             $text.= "Filhos: " . $diario->filhos .chr(10);
             $text.= "Casal: " . $diario->casal .chr(10);
