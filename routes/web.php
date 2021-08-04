@@ -51,9 +51,17 @@ Route::post('/JWLDXyegFhXmYrCW74MHvEkvX3O0ZhVWJbqpLweBfPNmgPDHvt/webhook', funct
                             'parse_mode' => 'HTML',
                 ]);
             }elseif($resultado == 0){
+                
+                $text = "Desculpe!" . chr(10);
+                $text .= "Este comando não existe." . chr(10);
+                $text .= "Apenas responda as perguntas ou use os comandos: ".chr(10);
+                foreach(TelegramBotController::comandos as $c){
+                    $text .= $c . chr(10);
+                }
+
                 Telegram::sendMessage([
                             'chat_id' => $mensagem['message']['chat']['id'], 
-                            'text' => "Desculpe, este comando não existe. Apenas responda as perguntas ou use os comandos: /help /register /unregister /list7",
+                            'text' => $text,
                             'parse_mode' => 'HTML',
                 ]);
             }
