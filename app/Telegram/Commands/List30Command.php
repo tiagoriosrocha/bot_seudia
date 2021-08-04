@@ -4,6 +4,7 @@ namespace App\Telegram\Commands;
 
 use Telegram\Bot\Commands\Command;
 use Telegram;
+use App\Http\Controllers\DiarioController;
 
 /**
  * Class HelpCommand.

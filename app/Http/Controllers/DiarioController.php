@@ -217,7 +217,13 @@ class DiarioController extends Controller
 
         if($listaDiario->count() >= 1){
             $text = "Olá!".chr(10).chr(10);
-            $text.= "Serão exibidos os resultados dos últimos 7 dias:".chr(10);
+            
+            if($qtd == 1){
+                $text.= "Será exibido último registro cadastrado:".chr(10);
+            }else{
+                $text.= "Serão exibidos os resultados dos últimos ". $qtd ." dias:".chr(10);    
+            }
+            
             
             foreach($listaDiario as $diario){
                 $text.= " ".chr(10);
