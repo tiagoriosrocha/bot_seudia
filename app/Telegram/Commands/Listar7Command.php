@@ -47,50 +47,57 @@ class Listar7Command extends Command
         $kids = "\xF0\x9F\x91\xAB";
         $work = "\xF0\x9F\x8F\xA2";
         $study = "\xE2\x9C\x8F";
+        $ampola = "\xE2\x8C\x9B";
 
-        $text = "Olá!".chr(10).chr(10);
-        $text.= "Serão exibidos os resultados dos últimos 7 dias:".chr(10);
-        
-        foreach($listaDiario as $diario){
-            $text.= " ".chr(10);
-            $text.= json_decode('"'.$calendar.'"') . "    Dia: " . Carbon::createFromFormat('Y-m-d', $diario->dia)->format('d/m/Y') .chr(10);    
+        if($listaDiario->count() >= 1){
+            $text = "Olá!".chr(10).chr(10);
+            $text.= "Serão exibidos os resultados dos últimos 7 dias:".chr(10);
             
-            $text.= json_decode('"'.$food.'"') . "    Alimentação: " . $diario->alimentacao . "   ";
-            for($i=0;$i<$diario->alimentacao;$i++){
-              $text.= json_decode('"'.$star.'"') . "";  
-            } 
-            $text.= "".chr(10);
+            foreach($listaDiario as $diario){
+                $text.= " ".chr(10);
+                $text.= json_decode('"'.$calendar.'"') . "    Dia: " . Carbon::createFromFormat('Y-m-d', $diario->dia)->format('d/m/Y') .chr(10);    
+                
+                $text.= json_decode('"'.$food.'"') . "    Alimentação: " . $diario->alimentacao . "   ";
+                for($i=0;$i<$diario->alimentacao;$i++){
+                  $text.= json_decode('"'.$star.'"') . "";  
+                } 
+                $text.= "".chr(10);
 
-            $text.= json_decode('"'.$sleep.'"') . "    Sono: " . $diario->sono . "                ";
-            for($i=0;$i<$diario->sono;$i++){
-              $text.= json_decode('"'.$star.'"') . "";  
-            } 
-            $text.= "".chr(10);
+                $text.= json_decode('"'.$sleep.'"') . "    Sono: " . $diario->sono . "                ";
+                for($i=0;$i<$diario->sono;$i++){
+                  $text.= json_decode('"'.$star.'"') . "";  
+                } 
+                $text.= "".chr(10);
 
-            $text.= json_decode('"'.$kids.'"') . "    Filhos: " . $diario->filhos . "               ";
-            for($i=0;$i<$diario->filhos;$i++){
-              $text.= json_decode('"'.$star.'"') . "";  
-            } 
-            $text.= "".chr(10);
+                $text.= json_decode('"'.$kids.'"') . "    Filhos: " . $diario->filhos . "               ";
+                for($i=0;$i<$diario->filhos;$i++){
+                  $text.= json_decode('"'.$star.'"') . "";  
+                } 
+                $text.= "".chr(10);
 
-            $text.= json_decode('"'.$love.'"') . "    Casal: " . $diario->casal . "               ";
-            for($i=0;$i<$diario->casal;$i++){
-              $text.= json_decode('"'.$star.'"') . "";  
-            } 
-            $text.= "".chr(10);
+                $text.= json_decode('"'.$love.'"') . "    Casal: " . $diario->casal . "               ";
+                for($i=0;$i<$diario->casal;$i++){
+                  $text.= json_decode('"'.$star.'"') . "";  
+                } 
+                $text.= "".chr(10);
 
-            $text.= json_decode('"'.$work.'"') . "    Trabalho: " . $diario->trabalho . "          ";
-            for($i=0;$i<$diario->trabalho;$i++){
-              $text.= json_decode('"'.$star.'"') . "";  
-            } 
-            $text.= "".chr(10);
+                $text.= json_decode('"'.$work.'"') . "    Trabalho: " . $diario->trabalho . "          ";
+                for($i=0;$i<$diario->trabalho;$i++){
+                  $text.= json_decode('"'.$star.'"') . "";  
+                } 
+                $text.= "".chr(10);
 
-            $text.= json_decode('"'.$study.'"') . "    Estudos: " . $diario->estudo . "           ";
-            for($i=0;$i<$diario->estudo;$i++){
-              $text.= json_decode('"'.$star.'"') . "";  
-            } 
-            $text.= "".chr(10);
+                $text.= json_decode('"'.$study.'"') . "    Estudos: " . $diario->estudo . "           ";
+                for($i=0;$i<$diario->estudo;$i++){
+                  $text.= json_decode('"'.$star.'"') . "";  
+                } 
+                $text.= "".chr(10);
+            }
+        }else{
+            $text = json_decode('"'.$ampola.'"') . " Infelizmente você ainda não possui registros!";
         }
+
+        
         
         
         $this->replyWithMessage(compact('text'));
