@@ -39,20 +39,22 @@ Route::post('/JWLDXyegFhXmYrCW74MHvEkvX3O0ZhVWJbqpLweBfPNmgPDHvt/webhook', funct
             $resultado = $diario->processarMensagem($mensagem);
             
             if($resultado == 1){
+                $check = "\xE2\x9C\x85";
                 Telegram::sendMessage([
                             'chat_id' => $mensagem['message']['chat']['id'], 
-                            'text' => "Recebido!",
+                            'text' => json_decode('"'.$check.'"') . " Recebido!",
                             'parse_mode' => 'HTML',
                 ]);
             }elseif($resultado == -1){
+                $error = "\xE2\x9D\x8C";
                 Telegram::sendMessage([
                             'chat_id' => $mensagem['message']['chat']['id'], 
-                            'text' => "Responda a mensagem com valores entre 0 e 5",
+                            'text' => json_decode('"'.$error.'"') . "Responda a mensagem com valores entre 0 e 5",
                             'parse_mode' => 'HTML',
                 ]);
             }elseif($resultado == 0){
-                
-                $text = "Desculpe!" . chr(10);
+                $question = "\xE2\x9D\x93";
+                $text = json_decode('"'.$question.'"') . "Desculpe!" . chr(10);
                 $text .= "Este comando não existe." . chr(10);
                 $text .= "Apenas responda as perguntas ou use os comandos: ".chr(10);
                 foreach(TelegramBotController::comandos as $c){
