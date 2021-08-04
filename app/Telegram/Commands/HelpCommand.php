@@ -36,7 +36,7 @@ class HelpCommand extends Command
         $text = "Olá!".chr(10).chr(10);
         $text.= "Seja bem vindo ao Bot - SeuDia!".chr(10).chr(10);
         $text.= "Este bot tem a intenção de fazer o levantamento de como foi o seu dia a partir de algumas perguntas simples que você irá enumerar de 1 a 5, ou 0 caso não se aplique.".chr(10).chr(10);
-        $text.= "As perguntas serão enviadas no final da noite, entre as 21h e as 23h".chr(10).chr(10);
+        $text.= "As perguntas serão enviadas no final da noite, entre as 21h e as 23h.".chr(10).chr(10);
         $text.= "Estes são os comandos aceitos:".chr(10);
         $text.= "/help - receba a lista de comandos.".chr(10);
         $text.= "/register - use para se registrar e começar a receber as perguntas diárias.".chr(10);

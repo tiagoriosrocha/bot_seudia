@@ -52,7 +52,9 @@ class DiarioController extends Controller
     public function enviarPesquisaAgora($user_id){
         Log::info("Enviando perguntas para o cliente " . $user_id);
             
-        $text  = "Boa noite!" . chr(10);
+        $emotionVoltar = "\xE2\x86\xA9";
+
+        $text  = "Olá!" . chr(10);
         $text .= "Como foi o seu dia " . Carbon::now()->format("d/m") . "?" . chr(10);
         $text .= "Responda as questões abaixo." . chr(10);
         $text .= "0 - Não se aplica" . chr(10);
@@ -61,6 +63,7 @@ class DiarioController extends Controller
         $text .= "3 - Normal/médio" . chr(10);
         $text .= "4 - Muito bom" . chr(10);
         $text .= "5 - Ótimo" . chr(10) . chr(10);
+        $text .= "Selecione a pergunta que desejar responder e clique em " . json_decode('"'.$emotionVoltar.'"') . " \"responder\" .";
 
         $telegram = new TelegramBotController();
         $telegram->enviarMensagem($text,$user_id);
