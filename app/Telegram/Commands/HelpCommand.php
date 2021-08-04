@@ -42,7 +42,15 @@ class HelpCommand extends Command
         $text.= "Seja bem vindo ao Bot - DayNotes!".chr(10).chr(10);
         $text.= "Este bot tem a intenção de fazer o levantamento de como foi o seu dia a partir de algumas perguntas simples que você irá enumerar de 1 a 5.".chr(10).chr(10);
         $text.= "As perguntas serão enviadas no final da noite, às 22h".chr(10).chr(10);
-        $text.= "Caso você tenha interesse de se inscrever, por favor, envie o comando /register".chr(10);
+        $text.= "Estes são os comandos aceitos:".chr(10);
+        $text.= "/help - receba a lista de comandos.".chr(10);
+        $text.= "/register - use para se registrar e começar a receber as perguntas diárias.".chr(10);
+        $text.= "/unregister - use para se desregistrar e não receber mais perguntas diárias.".chr(10);
+        $text.= "/delete - use para desregistrar e deletar todos seus dados.".chr(10);
+        $text.= "/list1 - receba a relação de respostas do último dia.".chr(10);
+        $text.= "/list7 - receba a relação dos últimos 7 dias.".chr(10);
+        $text.= "/list99 - receba a relação de todos seus dados.".chr(10);
+
         
         $this->replyWithMessage(compact('text'));
 
